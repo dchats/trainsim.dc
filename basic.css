@@ -84,6 +84,12 @@ body {
     width: 60px;
     height: 60px;
 }
+#BasicCanvas {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
 #BasicView {
     position: absolute;
     height: 85vh;
