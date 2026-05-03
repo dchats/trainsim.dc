@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+:root {
+    --chuck_width: 1920px;
+    --rotate_MSP: 180deg;
+}
+body {
+    overflow: hidden;
+}
+.GameWindow {
+    width: 100vw;
+    height: 100vh;
+}
+.modal[on="1"] {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+.modal {
+    display: none;
+}
+.MM_Background {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(http://trainsim.dc/icon/main.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.MM_Block {
+    width: 80vw;
+    height: 80vh;
+    white-space: nowrap;
+    background: #8FAADC;
+    border: 1px solid grey;
+}
+.MM_PodBlock {
+    position: absolute;
+    width: 32vw;
+    height: 64vh;
+    margin-left: 4vw;
+    margin-top: 8vh;
+    display: block;
+    background: #8FAADC;
+    color: white;
+}
+.MM_MapBlock {
+    width: 100%;
+    height: 60px;
+    background: hsl(219, 52%, 61%);
+    border: 1px solid grey;
+    font-size: 18px;
+    color: white;
+}
+.MM_DescImg {
+    width: 100%;
+    aspect-ratio: 1.777;
+    border: 1px solid;
+    border-radius: .3rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.MapIcon {
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+}
+#BasicView {
+    position: absolute;
+    height: 85vh;
+    margin-top: 0;
+}
+#BasicGrow {
+    position: absolute;
+    height: 15vh;
+    margin-top: 85vh;
+}
+.BlockView {
+    position: absolute;
+    width: var(--chuck_width);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center bottom -2px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.BlockGrow {
+    position: absolute;
+    width: var(--chuck_width);
+    height: 100%;
+}
+#NextPointBar {
+    position: fixed;
+    width: 300px;
+    margin-left: calc(100vw - 320px);
+    margin-top: 20px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: .3rem;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+#NextPointBar2 {
+    position: fixed;
+    width: 300px;
+    margin-left: calc(100vw - 320px);
+    margin-top: 80px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: .3rem;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+#MaxSpeedPoint {
+    position: fixed;
+    width: 0;
+    height: 0;
+    padding: 3px;
+    border-radius: 100%;
+    background: radial-gradient(#ffa0a0, red);
+    z-index: 110;
+    margin-left: calc(100vw - 152.5px);
+    margin-top: calc(100vh - 152.5px);
+    transform: translateX(calc(cos(var(--rotate_MSP)) * 97.5px))
+    translateY(calc(sin(var(--rotate_MSP)) * -97.5px));
+}
+#SpeedBar {
+    position: fixed;
+    width: 220px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background: hsl(0, 0%, 50%);
+    margin-left: calc(100vw - 260px);
+    margin-top: calc(100vh - 260px);
+    color: white;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 24px;
+    z-index: 100;
+}
+#SpeedPodBar {
+    position: fixed;
+    width: 190px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: 5px solid transparent;
+    transform: rotate(45deg);
+    border-top: 5px solid hsl(0, 0%, 75%);
+    border-left: 5px solid hsl(0, 0%, 75%);
+    margin-left: calc(100vw - 250px);
+    margin-top: calc(100vh - 250px);
+    z-index: 101;
+}
+#SpeedInBar {
+    position: fixed;
+    width: 190px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: 5px solid transparent;
+    transform: rotate(45deg);
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    margin-left: calc(100vw - 250px);
+    margin-top: calc(100vh - 250px);
+    z-index: 102;
+}
+#SpeedUnderBar {
+    position: fixed;
+    width: 180px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: 15px solid transparent;
+    transform: rotate(45deg);
+    border-bottom: 15px solid hsl(0, 0%, 50%);
+    border-right: 15px solid hsl(0, 0%, 50%);
+    margin-left: calc(100vw - 254.2px);
+    margin-top: calc(100vh - 254.001px);
+    z-index: 103;
+}
+* [id^="SBP"] {
+    z-index: 1000;
+    font-size: 16px;
+    position: fixed;
+    color: white;
+    width: 40px;
+    text-align: center;
+}
+#SBP1 {
+    margin-top: calc(100vh - 161.2px);
+    margin-left: calc(100vw - 244.2px);
+}
+#SBP2 {
+    margin-top: calc(100vh - 216.7px);
+    margin-left: calc(100vw - 221.95px);
+}
+#SBP3 {
+    margin-top: calc(100vh - 242.2px);
+    margin-left: calc(100vw - 169.7px);
+}
+#SBP4 {
+    margin-top: calc(100vh - 216.7px);
+    margin-left: calc(100vw - 117.45px);
+}
+#SBP5 {
+    margin-top: calc(100vh - 161.2px);
+    margin-left: calc(100vw - 95.2px);
+}
+#GoPoint {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-top: calc(85vh - 60px);
+    background-image: url(http://trainsim.dc/icon/point_map.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 99;
+}
+#BasicTrain {
+    position: absolute;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 50;
+}
+#TextBlock {
+    position: fixed;
+    width: 100vw;
+    margin-top: 75vh;
+    font-size: 24px;
+    z-index: 99;
+    display: grid;
+    justify-content: space-around;
+    color: white;
+}
