@@ -21,9 +21,7 @@
         </div>
     </div>
     <div class="modal" id="BasicGame">
-        <div id="BasicView"></div>
-        <div id="BasicGrow"></div>
-        <div id="BasicTrain"></div>
+        <canvas id="BasicCanvas"></canvas>
         <div id="NextPointBar"></div>
         <div id="NextPointBar2"></div>
         <span id="SPB_full">
@@ -44,3 +42,4 @@
 
 </body>
 <script src="http://trainsim.dc/work.js"></script>
+<script src="http://trainsim.dc/canvas-render.js"></script>
