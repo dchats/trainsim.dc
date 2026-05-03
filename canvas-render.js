@@ -45,6 +45,31 @@ const canvasRender = (() => {
     return result;
   }
 
+  function parseGradientStop(stop, index, stopsCount, height) {
+    const positionMatch = stop.match(/\s+([0-9.]+)(px|%)$/);
+    const color = positionMatch ? stop.slice(0, positionMatch.index).trim() : stop;
+    let offset = stopsCount <= 1 ? 0 : index / (stopsCount - 1);
+
+    if (positionMatch) {
+      offset = positionMatch[2] == '%' ? Number(positionMatch[1]) / 100 : Number(positionMatch[1]) / height;
+    }
+
+    return {
+      color: normalizeCanvasColor(color),
+      offset: Math.min(Math.max(offset, 0), 1)
+    };
+  }
+
+  function normalizeCanvasColor(color) {
+    const hslMatch = color.match(/^hsl\(\s*([0-9.]+)\s+([0-9.]+)%?\s+([0-9.]+)%\s*\)$/);
+
+    if (hslMatch) {
+      return `hsl(${hslMatch[1]}, ${hslMatch[2]}%, ${hslMatch[3]}%)`;
+    }
+
+    return color;
+  }
+
   function makeGrowGradient(cssGradient, y, height) {
     const gradient = ctx.createLinearGradient(0, y, 0, y + height);
     const match = cssGradient.match(/^linear-gradient\(180deg,\s*(.*)\)$/);
@@ -56,15 +81,8 @@ const canvasRender = (() => {
     }
 
     splitGradientStops(match[1]).forEach((stop, index, stops) => {
-      const stopMatch = stop.match(/^(.*\))\s+([0-9.]+)(px|%)$/);
-      const color = stopMatch ? stopMatch[1] : stop;
-      let offset = stops.length <= 1 ? 0 : index / (stops.length - 1);
-
-      if (stopMatch) {
-        offset = stopMatch[3] == '%' ? Number(stopMatch[2]) / 100 : Number(stopMatch[2]) / height;
-      }
-
-      gradient.addColorStop(Math.min(Math.max(offset, 0), 1), color);
+      const gradientStop = parseGradientStop(stop, index, stops.length, height);
+      gradient.addColorStop(gradientStop.offset, gradientStop.color);
     });
 
     return gradient;
